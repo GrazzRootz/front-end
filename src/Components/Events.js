@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { useAuth0, getAuthHeaders } from "../react-auth0-spa";
-import axios from 'axios';
+import React from "react";
+import { useEvents } from '../hooks/events';
 
 const Event = ({ children: event, key }) => {
     const garden = event.garden ? `garden link TODO ${event.garden}` : ''
@@ -16,27 +15,9 @@ const Event = ({ children: event, key }) => {
     );
 };
 
+
 export const Events = () => {
-    const [events, setEvents] = useState(undefined);
-    const [error, setError] = useState(undefined);
-    const { loading, getTokenSilently } = useAuth0();
-
-    const getEvents = () => getAuthHeaders(getTokenSilently)
-        .then(headers => {
-            console.log({ headers });
-            return headers;
-        })
-        .then(headers => 
-            axios
-                .get('http://localhost:4000/event', { headers })
-                .then(data => data.data.events)
-                .then(setEvents)
-         )
-        .catch(setError);
-
-    events === undefined 
-        && getEvents() 
-        && setEvents([]);
+    const { loading, error, events } = useEvents();
 
     return loading || events === undefined
         ? <>Loading...</> 
