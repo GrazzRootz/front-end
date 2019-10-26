@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Profile from "./Components/Profile";
 import PollView from "./Components/Polls/PollView";
 import PollForm from "./Components/Polls/PollForm";
+import LocalPolls from "./Components/Polls/LocalPolls";
 import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/poll/:id" component={PollForm} />
           <Route path="/poll-view/:id" component={PollView} />
           <PrivateRoute path="/profile/:id" component={Profile} />
+          <PrivateRoute path="/nearby-polls" component={LocalPolls} />
         </Switch>
       </BrowserRouter>
     </div>
