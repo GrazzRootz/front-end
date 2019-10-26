@@ -3,6 +3,8 @@ import NavBar from './Components/NavBar';
 import { useAuth0 } from './react-auth0-spa';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Profile from "./Components/Profile";
+import PollView from "./Components/Polls/PollView";
+import PollForm from "./Components/Polls/PollForm";
 import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
@@ -20,7 +22,9 @@ function App() {
         </header>
         <Switch>
           <Route path="/" exact />
-          <PrivateRoute path="/profile" component={Profile} />
+          <Route path="/poll/:id" component={PollForm} />
+          <Route path="/poll-view/:id" component={PollView} />
+          <PrivateRoute path="/profile/:id" component={Profile} />
         </Switch>
       </BrowserRouter>
     </div>
