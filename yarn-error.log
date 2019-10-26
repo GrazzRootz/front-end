@@ -1,0 +1,36 @@
+Arguments: 
+  /home/sam/.nvm/versions/node/v12.12.0/bin/node /usr/share/yarn/bin/yarn.js init
+
+PATH: 
+  /home/sam/bin:./node_modules/.bin:/home/sam/go/bin:/home/sam/.cargo/bin:/home/sam/.bin:/Applications/Racket v7.1/bin:/home/sam/.yarn/bin:/home/sam/.local/bin:/home/sam/bin:/home/sam/.nvm/versions/node/v12.12.0/bin:./node_modules/.bin:/home/sam/go/bin:/home/sam/.cargo/bin:/home/sam/.bin:/Applications/Racket v7.1/bin:/home/sam/.yarn/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files/WindowsApps/CanonicalGroupLimited.Ubuntu18.04onWindows_1804.2019.522.0_x64__79rhkp1fndgsc:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/System32:/mnt/c/Windows:/mnt/c/Windows/System32/wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0:/mnt/c/Windows/System32/OpenSSH:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/MiKTeX 2.9/miktex/bin/x64:/mnt/c/Users/sjmar/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/sjmar/AppData/Local/Programs/Microsoft VS Code/bin:/home/sam/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/home/sam/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/home/sam/.fzf/bin:/home/sam/.local/bin
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  12.12.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/usr/share/yarn/lib/cli.js:136724:13)
+      at Interface.emit (events.js:210:5)
+      at Interface._ttyWrite (readline.js:887:16)
+      at ReadStream.onkeypress (readline.js:191:10)
+      at ReadStream.emit (events.js:210:5)
+      at emitKeys (internal/readline/utils.js:433:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1153:36)
+      at ReadStream.emit (events.js:210:5)
+      at addChunk (_stream_readable.js:308:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

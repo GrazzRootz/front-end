@@ -1,0 +1,9 @@
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:GrazzRootz/front-end.git",
+  "author": "Sam Marshall <sjmarshy@gmail.com>",
+  "private": true,
+  "license": "UNLICENSED"
+}
