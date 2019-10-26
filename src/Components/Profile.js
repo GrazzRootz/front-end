@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 
 const Profile = () => {
-  const { loading, user } = useAuth0();
+  const auth0 = useAuth0();
+  const { user, loading } = auth0;
 
   if (loading || !user) {
     return (
