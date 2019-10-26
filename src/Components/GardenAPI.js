@@ -4,8 +4,11 @@ import { useAuth0 } from "../react-auth0-spa";
 const GardenAPI = () => {
   const [showGardens, setShowGardens] = useState(false);
   const [showPlants, setShowPlants] = useState(false);
+  const [showEquipment, setShowEquipment] = useState(false);
   const [gardens, setGardens] = useState("");
   const [plants, setPlants] = useState("");
+  const [equipment, setEquipment] = useState("");
+
   const { getTokenSilently } = useAuth0();
   const baseURL = 'http://localhost:3001/api';
 
@@ -28,13 +31,13 @@ const GardenAPI = () => {
     } else {
       setShowGardens(false);
       setShowPlants(false);
+      setShowEquipment(false);
     }
    
   };
 
   const getPlantsInGarden = async (id) => {
-
-          try {
+    try {
       const token = await getTokenSilently();
       const response = await fetch(`${baseURL}/plants/${id}`, {
         headers: {
@@ -48,8 +51,23 @@ const GardenAPI = () => {
     } catch (error) {
       console.error(error);
     }
-   
+  }
 
+  const getEquipmentInGarden = async (id) => {
+    try {
+      const token = await getTokenSilently();
+      const response = await fetch(`${baseURL}/equipment/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Access-Control-Allow-Origin": '*',
+        }
+      });
+      const responseData = await response.json();
+      setShowEquipment(true);
+      setEquipment(responseData);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -60,9 +78,11 @@ const GardenAPI = () => {
       <>
         <p>{garden.garden_name}</p>
         <button onClick={() => getPlantsInGarden(garden.garden_id)}>Show plants in this garden</button>
+        <button onClick={() => getEquipmentInGarden(garden.garden_id)}>Show Equipment in this garden</button>
         </>
       )}
       {showPlants && plants && plants.plants.map(plant => <p>{plant.plant_name}: {plant.quantity}</p>)}
+      {setShowEquipment && equipment && equipment.equipment.map(equipment => <p>{equipment.equipment_name}: {equipment.quantity}</p>)}
     </>
   );
 };
