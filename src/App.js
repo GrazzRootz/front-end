@@ -2,11 +2,13 @@ import React from 'react';
 import NavBar from './Components/NavBar';
 import { useAuth0 } from './react-auth0-spa';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Events } from './Components/Events';
 import Profile from "./Components/Profile";
 import PollView from "./Components/Polls/PollView";
 import PollForm from "./Components/Polls/PollForm";
 import LocalPolls from "./Components/Polls/LocalPolls";
 import PrivateRoute from "./Components/PrivateRoute";
+import GardenAPI from './Components/GardenAPI';
 
 function App() {
   const { loading } = useAuth0();
@@ -27,6 +29,9 @@ function App() {
           <Route path="/poll-view/:id" component={PollView} />
           <PrivateRoute path="/profile/:id" component={Profile} />
           <PrivateRoute path="/nearby-polls" component={LocalPolls} />
+          <PrivateRoute path="/profile" component={Profile} />
+          <PrivateRoute path="/garden-api" component={GardenAPI} />
+          <PrivateRoute path="/events" component={Events} />
         </Switch>
       </BrowserRouter>
     </div>
