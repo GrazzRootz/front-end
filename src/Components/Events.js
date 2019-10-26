@@ -1,15 +1,16 @@
-import React, { Fragment, useState } from "react";
-import { useAuth0 } from "../react-auth0-spa";
+import React, { useState } from "react";
+import { useAuth0, getAuthHeaders } from "../react-auth0-spa";
 import axios from 'axios';
 
-const Event = ({ children: event }) => {
+const Event = ({ children: event, key }) => {
+    const garden = event.garden ? `garden link TODO ${event.garden}` : ''
     return (
-        <div className='event' key={event.uuid}>
+        <div className='event' key={key}>
             <h2 className='event-title'>{event.title}</h2>
             <div>
                 <p>{event.date}</p>
                 <p>{event.desc}</p>
-                <p>garden link TODO: {event.garden}</p>
+                <>{garden === '' ? garden : <p>{garden}</p>}</>
             </div>
         </div>
     );
@@ -18,11 +19,19 @@ const Event = ({ children: event }) => {
 export const Events = () => {
     const [events, setEvents] = useState(undefined);
     const [error, setError] = useState(undefined);
-    const { loading, user } = useAuth0();
+    const { loading, getTokenSilently } = useAuth0();
 
-    const getEvents = () => axios.get('http://localhost:4000/event')
-        .then(data => data.data.events)
-        .then(setEvents)
+    const getEvents = () => getAuthHeaders(getTokenSilently)
+        .then(headers => {
+            console.log({ headers });
+            return headers;
+        })
+        .then(headers => 
+            axios
+                .get('http://localhost:4000/event', { headers })
+                .then(data => data.data.events)
+                .then(setEvents)
+         )
         .catch(setError);
 
     events === undefined 
@@ -34,6 +43,6 @@ export const Events = () => {
         : error 
         ? <div><p>Error! {error.message}</p></div> 
         : events.length > 0
-        ? events.map(e => <Event>{e}</Event>)
+        ? events.map(e => <Event key={e.uuid}>{e}</Event>)
         : <div><p>no events!</p></div>;
 }

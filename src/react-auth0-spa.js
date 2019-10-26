@@ -5,6 +5,13 @@ import createAuth0Client from '@auth0/auth0-spa-js';
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 
+export const getAuthHeaders = (getTokenSilently) =>
+    getTokenSilently()
+        .then(token => ({ 
+            Authorization: `Bearer ${token}`,
+            "Access-Control-Allow-Origin": "*"
+        }));
+
 export const Auth0Context = React.createContext();
 export const useAuth0 = () => useContext(Auth0Context);
 export const Auth0Provider = ({
@@ -23,9 +30,13 @@ export const Auth0Provider = ({
       const auth0FromHook = await createAuth0Client(initOptions);
       setAuth0(auth0FromHook);
 
-      if (window.location.search.includes('code=')) {
-        const { appState } = await auth0FromHook.handleRedirectCallback();
-        onRedirectCallback(appState);
+      try {
+        if (window.location.search.includes('code=')) {
+          const { appState } = await auth0FromHook.handleRedirectCallback();
+  	  onRedirectCallback(appState);
+	}
+      } catch (e) {
+        console.error(e);
       }
 
       const isAuthenticated = await auth0FromHook.isAuthenticated();
