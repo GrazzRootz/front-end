@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Events } from './Components/Events';
 import Profile from "./Components/Profile";
 import PrivateRoute from "./Components/PrivateRoute";
+import GardenAPI from './Components/GardenAPI';
 
 function App() {
   const { loading } = useAuth0();
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route path="/" exact />
           <PrivateRoute path="/profile" component={Profile} />
+          <PrivateRoute path="/garden-api" component={GardenAPI} />
           <PrivateRoute path="/events" component={Events} />
         </Switch>
       </BrowserRouter>

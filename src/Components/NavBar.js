@@ -15,9 +15,11 @@ const NavBar = () => {
       <span>
         <Link to="/">Home</Link>&nbsp;
         <Link to="/profile">Profile</Link>&nbsp;
-        <Link to="/events">Events</Link>
+        <Link to="/events">Events</Link>&nbsp;
+        <Link to="/garden-api">Gardens</Link>
       </span>
     )}
+    
     </div>
   );
 };
