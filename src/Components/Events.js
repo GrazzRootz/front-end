@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import axios from 'axios';
 
-const Event = (event) => {
+const Event = ({ children: event }) => {
     return (
         <div className='event' key={event.uuid}>
             <h2 className='event-title'>{event.title}</h2>
@@ -16,17 +16,20 @@ const Event = (event) => {
 };
 
 export const Events = () => {
-    const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState(undefined);
     const [error, setError] = useState(undefined);
     const { loading, user } = useAuth0();
 
-    axios.get('http://localhost:4000/event')
+    const getEvents = () => axios.get('http://localhost:4000/event')
         .then(data => data.data.events)
         .then(setEvents)
         .catch(setError);
 
+    events === undefined 
+        && getEvents() 
+        && setEvents([]);
 
-    return loading 
+    return loading || events === undefined
         ? <>Loading...</> 
         : error 
         ? <div><p>Error! {error.message}</p></div> 
