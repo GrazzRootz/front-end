@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth0 } from "../react-auth0-spa";
+import { useAuth0, getAuthHeaders } from "../react-auth0-spa";
 
 const GardenAPI = () => {
   const [showGardens, setShowGardens] = useState(false);
@@ -15,13 +15,8 @@ const GardenAPI = () => {
   const getGardens = async () => {
     if (!showGardens) {
        try {
-      const token = await getTokenSilently();
-      const response = await fetch(`${baseURL}/gardens`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Access-Control-Allow-Origin": '*',
-        }
-      });
+      const headers = await getAuthHeaders(getTokenSilently);
+      const response = await fetch(`${baseURL}/gardens`, { headers });
       const responseData = await response.json();
       setShowGardens(true);
       setGardens(responseData);
