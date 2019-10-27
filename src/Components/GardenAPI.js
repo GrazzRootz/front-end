@@ -94,6 +94,7 @@ const GardenAPI = () => {
   },
   ]
 
+
   const getEquipmentInGarden = async (id) => {
     try {
       const token = await getTokenSilently();
