@@ -7,9 +7,6 @@ const NavBar = () => {
 
   return (
     <div>
-      {/* !isAuthenticated && (
-        <button onClick={() => loginWithRedirect({})}>Log in</button>
-      ) */}
       {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
       {isAuthenticated && (
       <span>
