@@ -31,12 +31,12 @@ function App() {
             <Route path="/" exact component={NewCommunity} />
             <Route path="/poll/:id" component={PollForm} />
             <Route path="/poll-view/:id" component={PollView} />
-            <PrivateRoute path="/mycommunity" component={FakeNewCommunity} />
-            <PrivateRoute path="/profile/:id" component={Profile} />
-            <PrivateRoute path="/nearby-polls" component={LocalPolls} />
-            <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/garden-api" component={GardenAPI} />
-            <PrivateRoute path="/events" component={EventsAndEntries} />
+            <Route path="/mycommunity" component={FakeNewCommunity} />
+            <Route path="/profile/:id" component={Profile} />
+            <Route path="/nearby-polls" component={LocalPolls} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/garden-api" component={GardenAPI} />
+            <Route path="/events" component={EventsAndEntries} />
           </Switch>
         </Container>
       </BrowserRouter>
