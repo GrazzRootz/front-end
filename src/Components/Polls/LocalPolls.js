@@ -4,44 +4,42 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container'
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap'
 
 
-class LocalPolls extends React.Component {
-    constructor(props){
-        super(props);
-        this.state ={
-         polls: {
-             title: "Loading..",
-             choices: []
-         }
-        }
-    }   
+const LocalPolls = () => {
 
-    componentDidMount = () => {
-        var that = this;
-        axios.get('http://127.0.0.1:8000/polls/' )
-          .then(function (response) {
-            that.setState({
-              polls:  response.data
-            })
-          })
-          .catch(function (error) {
-            console.log("ERR:", error)
-          });   
-      }
-    
-    render() {
+  const polls = [
+        {title: 'Palm Tree in Kens Garden?',
+    askedBy: 'David Weaver',
+    vote: 'YES'
+    },
+    {title: 'Tomatos in Bowden Road?',
+    askedBy: 'Sam Marshall',
+    vote: 'YES'
+    },
+        {title: 'Spare tulip buds, any takers?',
+    askedBy: 'David Weaver',
+    vote: 'YES'
+    },
+        {title: 'Does anybody have a spare trowel?',
+    askedBy: 'Natassja Blore',
+    vote: 'NO'
+    },
 
-    const choices = Object.keys(this.state.polls).map( key => 
-      <>
-        <Row key={key}>
-          <Link to={"/poll/"+this.state.polls[key].uuid}><h3>{this.state.polls[key].title}</h3></Link>
-        </Row>
-        <Row key={key+"3"}>
-          <h5 className="text-muted">asked by {this.state.polls[key].user_uuid}</h5>
-        </Row>
-        </>
-    )
+  ]
+
+    const choices = polls.map( key => {
+      return <>
+    <h3>{key.title}</h3>
+    <p>Current Consensus: {key.vote}</p>
+    <p>Asked By: {key.askedBy}</p>
+      <LinkContainer to="/garden/kensgarden">
+          <Button>Go to this garden poll</Button>
+        </LinkContainer>
+      </>
+    })
 
     return (
         <Container>
@@ -54,6 +52,5 @@ class LocalPolls extends React.Component {
         </Container>
       );
     }
-}
 
 export default LocalPolls;
