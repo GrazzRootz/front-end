@@ -10,6 +10,7 @@ import LocalPolls from "./Components/Polls/LocalPolls";
 import PrivateRoute from "./Components/PrivateRoute";
 import GardenAPI from './Components/GardenAPI';
 import { NewCommunity } from './Components/NewCommunity';
+import { FakeNewCommunity } from './Components/FakeNewCommunity';
 import Container from 'react-bootstrap/Container'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" exact component={NewCommunity} />
             <Route path="/poll/:id" component={PollForm} />
             <Route path="/poll-view/:id" component={PollView} />
+            <PrivateRoute path="/mycommunity" component={FakeNewCommunity} />
             <PrivateRoute path="/profile/:id" component={Profile} />
             <PrivateRoute path="/nearby-polls" component={LocalPolls} />
             <PrivateRoute path="/profile" component={Profile} />
