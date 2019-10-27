@@ -21,7 +21,6 @@ const NavBar = () => {
         <LinkContainer to="/events">
           <Nav.Link>Events</Nav.Link>
         </LinkContainer>
-
         <LinkContainer to="/nearby-polls">
           <Nav.Link>Community Questions</Nav.Link>
         </LinkContainer>

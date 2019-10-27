@@ -3,6 +3,9 @@ import { useAuth0, getAuthHeaders } from "../react-auth0-spa";
 import Row from 'react-bootstrap/Row';
 import GardenMap from './GardenMap';
 import App from '../App.css';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap'
 
 
 const GardenAPI = () => {
@@ -73,7 +76,7 @@ const GardenAPI = () => {
   useEffect(() => {
     !showGardens && getGardens();
   })
-  
+
 if (showGardens) {
     return (
 
@@ -95,7 +98,9 @@ if (showGardens) {
           return (
             <>
               <h3>{garden.garden_name}</h3>
-              <button>Go to this garden</button>
+                <LinkContainer to={{pathname: "/garden/" , name: garden.garden_name }}>
+                  <Button>Go to this garden</Button>
+                </LinkContainer>
             </>
           )
         })}
