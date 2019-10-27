@@ -98,7 +98,7 @@ if (showGardens) {
           return (
             <>
               <h3>{garden.garden_name}</h3>
-                <LinkContainer to={{pathname: "/garden/" , name: garden.garden_name }}>
+                <LinkContainer to="/garden/kensgarden">
                   <Button>Go to this garden</Button>
                 </LinkContainer>
             </>
