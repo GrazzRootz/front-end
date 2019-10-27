@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container'
 import axios from 'axios';
-
+import CommentSection from '../Comments/CommentSection';
 
 class PollView extends React.Component {
     constructor(props){
@@ -45,6 +45,9 @@ class PollView extends React.Component {
            <h2>{this.state.polls.title}</h2>
           </Row>
             {choices}
+          <Row>
+             <CommentSection target_uuid={this.props.match.params.id} /> 
+          </Row>
           </Col>
         </Container>
       );
