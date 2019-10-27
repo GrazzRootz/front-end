@@ -56,6 +56,44 @@ const GardenAPI = () => {
     }
   }
 
+  const gardensData = [
+     {
+    garden_name: "Ken's Garden",
+    soil_ph: '6',
+    guerilla: false,
+    latitude: 53.465,
+    longitude: -2.216,
+  },
+  {
+    garden_name: 'Briar Ridge',
+    soil_ph: '6',
+    guerilla: true,
+    latitude: 53.463,
+    longitude: -2.257,
+  },
+  {
+    garden_name: 'Bowden Road',
+    soil_ph: '6',
+    guerilla: true,
+    latitude: 53.507,
+    longitude: -2.326,
+  },
+  {
+    garden_name: 'Little Chapel',
+    soil_ph: '6',
+    guerilla: true,
+    latitude: 53.491,
+    longitude: -2.213,
+  },
+  {
+    garden_name: "Julie's Allotment",
+    soil_ph: '6',
+    guerilla: false,
+    latitude: 53.475,
+    longitude: -2.276,
+  },
+  ]
+
   const getEquipmentInGarden = async (id) => {
     try {
       const token = await getTokenSilently();
@@ -81,7 +119,7 @@ if (showGardens) {
     return (
 
     <div className='garden-page-container'>
-      <GardenMap gardens={gardens.gardens}/>
+      <GardenMap gardens={gardensData}/>
       {/* {showGardens&& gardens && gardens.gardens.map(garden => 
       <>
         <p>{garden.garden_name}</p>
@@ -94,7 +132,7 @@ if (showGardens) {
       {showEquipment && equipment && equipment.equipment.map(equipment => <p>{equipment.equipment_name}: {equipment.quantity}</p>)}
      */}
       <div className='garden-list'>
-        {gardens && gardens.gardens.map(garden => {
+        {gardens && gardensData.map(garden => {
           return (
             <>
               <h3>{garden.garden_name}</h3>
