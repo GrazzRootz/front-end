@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { useAuth0, getAuthHeaders } from "../react-auth0-spa";
 import Row from 'react-bootstrap/Row';
+import GardenMap from './GardenMap';
+
 
 const GardenAPI = () => {
   const [showGardens, setShowGardens] = useState(false);
@@ -20,6 +22,7 @@ const GardenAPI = () => {
       const response = await fetch(`${baseURL}/gardens`, { headers });
       const responseData = await response.json();
       setShowGardens(true);
+      console.log(responseData)
       setGardens(responseData);
     } catch (error) {
       console.error(error);
@@ -66,25 +69,18 @@ const GardenAPI = () => {
     }
   }
 
-  return (
-    <>
-    <Row className="mr-auto ml-auto">
-
-      <iframe 
-        width="600" 
-        height="450" 
-        frameborder="0" 
-        title="THIS IS A TEST "
-        style={{border: "0"}} 
-        src={"https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ2_UmUkxNekgRqmv-BDgUvtk&key=AIzaSyAy6wYykvcPj_v9DitPe5GNx6AefsttM6U"} 
-        allowfullscreen
-        >
-        
-      </iframe>
-    </Row>
-
-      <button onClick={getGardens}>Get gardens</button>
-      {showGardens&& gardens && gardens.gardens.map(garden => 
+  useEffect(() => {
+    console.log('using effect')
+    !showGardens && getGardens();
+    console.log(showGardens)
+  })
+  
+if (showGardens) {
+    return (
+    <div>
+      {/* <button onClick={getGardens}>Get gardens</button> */}
+      <GardenMap gardens={gardens.gardens}/>
+      {/* {showGardens&& gardens && gardens.gardens.map(garden => 
       <>
         <p>{garden.garden_name}</p>
         
@@ -94,8 +90,15 @@ const GardenAPI = () => {
       )}
       {showPlants && plants && plants.plants.map(plant => <p>{plant.plant_name}: {plant.quantity}</p>)}
       {showEquipment && equipment && equipment.equipment.map(equipment => <p>{equipment.equipment_name}: {equipment.quantity}</p>)}
-    </>
+     */}
+     </div>
   );
+} else {
+  return (
+  <h1>Loading...</h1>
+  )
+}
+
 };
 
 export default GardenAPI;
