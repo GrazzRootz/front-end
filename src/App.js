@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './Components/NavBar';
 import { useAuth0 } from './react-auth0-spa';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Events } from './Components/Events';
+import { EventsAndEntries } from './Components/Events';
 import Profile from "./Components/Profile";
 import PollView from "./Components/Polls/PollView";
 import PollForm from "./Components/Polls/PollForm";
@@ -31,7 +31,7 @@ function App() {
           <PrivateRoute path="/nearby-polls" component={LocalPolls} />
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/garden-api" component={GardenAPI} />
-          <PrivateRoute path="/events" component={Events} />
+          <PrivateRoute path="/events" component={EventsAndEntries} />
         </Switch>
       </BrowserRouter>
     </div>
