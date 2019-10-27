@@ -1,28 +1,49 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { useAuth0 } from '../react-auth0-spa';
+import Navbar from 'react-bootstrap/Navbar';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap'
+import Nav from 'react-bootstrap/Nav';
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
-    <div>
-      {!isAuthenticated && (
-        <button onClick={() => loginWithRedirect({})}>Log in</button>
-      )}
-      {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
-      {isAuthenticated && (
-      <span>
-        <Link to="/">Home</Link>&nbsp;
-        <Link to="/profile">Profile</Link>
-        <Link to="/nearby-polls">Community Questions</Link>
-        <Link to="/profile">Profile</Link>&nbsp;
-        <Link to="/events">Events</Link>&nbsp;
-        <Link to="/garden-api">Gardens</Link>
-      </span>
-    )}
-    
-    </div>
+    <Navbar bg="success" variant="dark">
+      <Nav className="mr-auto">
+        <IndexLinkContainer to="/">
+          <Navbar.Brand>GrazzRootz</Navbar.Brand>
+        </IndexLinkContainer>
+      { isAuthenticated ? 
+      <>
+        <LinkContainer to="/garden-api">
+          <Nav.Link>Gardens</Nav.Link>
+        </LinkContainer>
+        <LinkContainer to="/events">
+          <Nav.Link>Events</Nav.Link>
+        </LinkContainer>
+
+        <LinkContainer to="/nearby-polls">
+          <Nav.Link>Community Questions</Nav.Link>
+        </LinkContainer>
+
+
+      </>:
+      ""
+      }
+      </Nav>
+      <Nav className="ml-auto">
+        {isAuthenticated ? 
+          <>
+          <LinkContainer to="/profile">
+            <Nav.Link>Profile</Nav.Link>
+          </LinkContainer>
+          <Nav.Link onClick={() => logout()}>Log Out</Nav.Link>
+          </>
+          : 
+          <Nav.Link onClick={() => loginWithRedirect({})}>Log In</Nav.Link>
+        }
+      </Nav>
+    </Navbar>
   );
 };
 
