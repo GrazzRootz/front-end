@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import axios from 'axios';
 
@@ -18,7 +18,7 @@ const Event = ({ children: event }) => {
 export const Events = () => {
     const [events, setEvents] = useState(undefined);
     const [error, setError] = useState(undefined);
-    const { loading, user } = useAuth0();
+    const { loading } = useAuth0();
 
     const getEvents = () => axios.get('http://localhost:4000/event')
         .then(data => data.data.events)
