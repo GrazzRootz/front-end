@@ -1,0 +1,7 @@
+.garden-pin {
+    background: white;
+    border-radius: 50%;
+    border: 1pt solid red;
+    text-align: center;
+    width: 4vw;
+}
