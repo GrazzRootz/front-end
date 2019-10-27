@@ -9,6 +9,7 @@ import PollForm from "./Components/Polls/PollForm";
 import LocalPolls from "./Components/Polls/LocalPolls";
 import PrivateRoute from "./Components/PrivateRoute";
 import GardenAPI from './Components/GardenAPI';
+import { NewCommunity } from './Components/NewCommunity';
 import Container from 'react-bootstrap/Container'
 
 function App() {
@@ -24,10 +25,9 @@ function App() {
         <header>
           <NavBar />
         </header>
-
         <Container >
           <Switch>
-            <Route path="/" exact />
+            <Route path="/" exact component={NewCommunity} />
             <Route path="/poll/:id" component={PollForm} />
             <Route path="/poll-view/:id" component={PollView} />
             <PrivateRoute path="/profile/:id" component={Profile} />

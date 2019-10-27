@@ -31,18 +31,14 @@ const NavBar = () => {
       ""
       }
       </Nav>
-      <Nav className="ml-auto">
-        {isAuthenticated ? 
-          <>
-          <LinkContainer to="/profile">
-            <Nav.Link>Profile</Nav.Link>
-          </LinkContainer>
-          <Nav.Link onClick={() => logout()}>Log Out</Nav.Link>
-          </>
-          : 
-          <Nav.Link onClick={() => loginWithRedirect({})}>Log In</Nav.Link>
-        }
+      {
+          isAuthenticated && <Nav className="ml-auto">
+              <LinkContainer to="/profile">
+                <Nav.Link>Profile</Nav.Link>
+              </LinkContainer>
+              <Nav.Link onClick={() => logout()}>Log Out</Nav.Link>
       </Nav>
+      }
     </Navbar>
   );
 };
