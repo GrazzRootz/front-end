@@ -40,7 +40,6 @@ const NavBar = () => {
       </Nav>
       }
     </Navbar>
->>>>>>> master
   );
 };
 
