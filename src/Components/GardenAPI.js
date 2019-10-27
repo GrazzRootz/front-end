@@ -53,15 +53,15 @@ if (true) {
 
     <div className='garden-page-container'>
       <GardenMap gardens={gardensData}/>
-      <div className='garden-list'>
+      <div className='garden-list' style={{ paddingLeft: 16 }}>
         {gardensData.map(garden => {
           return (
-            <>
-              <h3>{garden.garden_name}</h3>
+            <div style={{ paddingTop: 16 }}>
+              <h5 style={{ textAlign: 'left' }}>{garden.garden_name}</h5>
                 <LinkContainer to="/garden/kensgarden">
-                  <Button>Go to this garden</Button>
+                  <Button style={{ padding: 0 }}>See&nbsp;Garden!</Button>
                 </LinkContainer>
-            </>
+            </div>
           )
         })}
     </div>
