@@ -10,6 +10,7 @@ const center = ({
    zoom: 12
 })
 
+
 const gardenMarkers = props.gardens && props.gardens.map((garden, index) => {
   return <GardenMarker 
              key={index} 
@@ -20,7 +21,7 @@ const gardenMarkers = props.gardens && props.gardens.map((garden, index) => {
 })
 
  return (
-       <div style={{ height: '90vh', width: '100%' }}>
+       <div className='map-container'>
         <GoogleMapReact 
           bootstrapURLKeys={{
            key: "AIzaSyAy6wYykvcPj_v9DitPe5GNx6AefsttM6U", 

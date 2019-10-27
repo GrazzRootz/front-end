@@ -2,6 +2,10 @@ import React, { useState , useEffect} from "react";
 import { useAuth0, getAuthHeaders } from "../react-auth0-spa";
 import Row from 'react-bootstrap/Row';
 import GardenMap from './GardenMap';
+import App from '../App.css';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap'
 
 
 const GardenAPI = () => {
@@ -70,15 +74,13 @@ const GardenAPI = () => {
   }
 
   useEffect(() => {
-    console.log('using effect')
     !showGardens && getGardens();
-    console.log(showGardens)
   })
-  
+
 if (showGardens) {
     return (
-    <div>
-      {/* <button onClick={getGardens}>Get gardens</button> */}
+
+    <div className='garden-page-container'>
       <GardenMap gardens={gardens.gardens}/>
       {/* {showGardens&& gardens && gardens.gardens.map(garden => 
       <>
@@ -91,7 +93,19 @@ if (showGardens) {
       {showPlants && plants && plants.plants.map(plant => <p>{plant.plant_name}: {plant.quantity}</p>)}
       {showEquipment && equipment && equipment.equipment.map(equipment => <p>{equipment.equipment_name}: {equipment.quantity}</p>)}
      */}
-     </div>
+      <div className='garden-list'>
+        {gardens && gardens.gardens.map(garden => {
+          return (
+            <>
+              <h3>{garden.garden_name}</h3>
+                <LinkContainer to="/garden/kensgarden">
+                  <Button>Go to this garden</Button>
+                </LinkContainer>
+            </>
+          )
+        })}
+    </div>
+    </div>
   );
 } else {
   return (

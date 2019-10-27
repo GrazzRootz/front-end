@@ -3,5 +3,27 @@
     border-radius: 50%;
     border: 1pt solid red;
     text-align: center;
-    width: 4vw;
+    width: 2vw;
+    height: 2vw;
+    font-size: 0.5rem;
+}
+
+.map-container {
+    height: 80vh;
+    width: 100%;
+    margin-top: 5vh;
+    border: 2pt solid green;
+}
+
+.garden-page-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: space-between;
+
+}
+
+.garden-list {
+    align-self: center;
+    text-align: center;
 }

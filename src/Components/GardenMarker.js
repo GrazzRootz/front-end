@@ -3,7 +3,7 @@ import App from '../App.css';
 
 const GardenMarker = (props) => {
      return (
-      <div className='garden-pin'>{props.garden.garden_name}</div>
+      <button className='garden-pin'>{props.garden.garden_name}</button>
     );
     
 }

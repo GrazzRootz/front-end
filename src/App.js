@@ -12,7 +12,7 @@ import GardenAPI from './Components/GardenAPI';
 import { NewCommunity } from './Components/NewCommunity';
 import { FakeNewCommunity } from './Components/FakeNewCommunity';
 import Container from 'react-bootstrap/Container'
-
+import GardenPage from './Components/GardenPage';
 function App() {
   const { loading } = useAuth0();
 
@@ -31,7 +31,11 @@ function App() {
             <Route path="/" exact component={NewCommunity} />
             <Route path="/poll/:id" component={PollForm} />
             <Route path="/poll-view/:id" component={PollView} />
+
+            <Route path="/garden/:gardenName" component={GardenPage} />
+
             <PrivateRoute path="/mycommunity" component={FakeNewCommunity} />
+
             <PrivateRoute path="/profile/:id" component={Profile} />
             <PrivateRoute path="/nearby-polls" component={LocalPolls} />
             <PrivateRoute path="/profile" component={Profile} />
