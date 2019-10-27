@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import App from '../App.css';
 
 const GardenPage = () => {
 
+  const [votes, changeVote] = useState('NO');
+
+  const handleVote = (vote) => {
+      if (votes !== vote) {
+          changeVote(vote)
+      }
+  }
 
      return (
      <div>
@@ -19,6 +26,15 @@ const GardenPage = () => {
             <h3>Tools Available Here</h3>
             <li>Lawnmower: 1</li>
             <li>Fertilizer: 5kg</li>
+        </div>
+        <div>
+           <h3> Get Involved In Ken's Garden:</h3>
+           <li>
+            <p>Should We Plant A Palm Tree In Ken's Garden?</p>
+            <button onClick={() => handleVote('YES')}>Yes</button>
+            <button onClick={() => handleVote('NO')}>No</button>
+            <p> Current Winner: {votes} </p>
+           </li>
         </div>
 
     </div>
