@@ -29,10 +29,12 @@ const GardenPage = () => {
         </div>
         <div>
            <h3> Get Involved In Ken's Garden:</h3>
-           <p>Should We Plant A Palm Tree In Ken's Garden?</p>
-           <button onClick={() => handleVote('YES')}>Yes</button>
-           <button onClick={() => handleVote('NO')}>No</button>
-           <p> Current Winner: {votes} </p>
+           <li>
+            <p>Should We Plant A Palm Tree In Ken's Garden?</p>
+            <button onClick={() => handleVote('YES')}>Yes</button>
+            <button onClick={() => handleVote('NO')}>No</button>
+            <p> Current Winner: {votes} </p>
+           </li>
         </div>
 
     </div>

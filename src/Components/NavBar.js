@@ -5,7 +5,8 @@ import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap'
 import Nav from 'react-bootstrap/Nav';
 
 const NavBar = () => {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+    const isAuthenticated = true;
+  const { loginWithRedirect, logout } = useAuth0();
 
   return (
     <Navbar bg="success" variant="dark">
